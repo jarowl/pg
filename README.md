@@ -1,2 +1,2 @@
 # pg
-# repos for school purposes only
+## repos for school purposes only
