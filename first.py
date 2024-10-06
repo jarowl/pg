@@ -4,6 +4,6 @@ def sudy_nebo_lichy(cislo):
         print("Cislo", cislo, "je sude")
     else:
         print("Cislo", cislo, "je liche")
-
+#test
 sudy_nebo_lichy(5)
 sudy_nebo_lichy(1000000)
