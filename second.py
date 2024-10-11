@@ -1,8 +1,8 @@
 def userInputLimit():
     #\/\/\ user limitations \/\/\
     num = input("Zadej číslo od 0 do 100: ")
-    if int(num) <= 0 or int(num) >= 100:
-        while int(num) <= 0 or int(num) >= 100:
+    if int(num) < 0 or int(num) > 100:
+        while int(num) < 0 or int(num) > 100:
             num = input("Špatně zadané číslo. Zadej znovu číslo od 0 do 100: ")
         return int(num)
     else:
@@ -11,6 +11,7 @@ def userInputLimit():
 def cislo_text (cislo):
     # funkce, která zkonvertuje číslo do náležité textové reprezentace.
     numDict = {
+        0: "nula",
         1: "jedna",
         2: "dva",
         3: "tři",
