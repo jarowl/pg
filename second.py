@@ -41,6 +41,8 @@ def cislo_text (cislo):
             return "patnáct"
         case 19:
             return "devatenáct"
+        case 100:
+            return numDict[int(cislo)]
 
     if int(cislo) > 11 and int(cislo) < 20:
         lt = str(cislo/10).split(".",2)
