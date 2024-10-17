@@ -60,5 +60,5 @@ def cislo_text (cislo):
     
 if __name__ == "__main__":
     cislo = userInputLimit()
-    text = cislo_text('cislo')
+    text = cislo_text(cislo)
     print(text)
