@@ -61,5 +61,5 @@ def cislo_text (cislo):
     return None
     
 if __name__ == "__main__":
-    text = cislo_text("112")
+    text = cislo_text(0)
     print(text)
