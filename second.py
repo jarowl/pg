@@ -1,15 +1,17 @@
 def userInputLimit():
     #\/\/\ user limitations \/\/\
-    num = int(input("Zadej číslo od 0 do 100: "))
+    num_input = input("Zadej číslo od 0 do 100: ")
+    num = int(num_input)
     if (num) < 0 or (num) > 100:
         while (num) < 0 or (num) > 100:
-            num = input("Špatně zadané číslo. Zadej znovu číslo od 0 do 100: ")
+            num_input = input("Špatně zadané číslo. Zadej znovu číslo od 0 do 100: ")
         return (num)
     else:
         return (num)
 
 def cislo_text (cislo):
     # funkce, která zkonvertuje číslo do náležité textové reprezentace.
+    num = int(cislo)
     numDict = {
         0: "nula",
         1: "jedna",
@@ -32,7 +34,7 @@ def cislo_text (cislo):
         90: "devadesát",
         100: "sto"
     }
-    match cislo:
+    match num:
         case 11:
             return "jedenáct"
         case 14:
@@ -42,19 +44,19 @@ def cislo_text (cislo):
         case 19:
             return "devatenáct"
         case 100:
-            return numDict[cislo]
+            return numDict[num]
 
-    if cislo > 11 and cislo < 20:
-        lt = str(cislo/10).split(".",2)
+    if num > 11 and num < 20:
+        lt = str(num/10).split(".",2)
         jednotky = int(lt[1])
         return numDict[jednotky] + "náct"
-    elif (cislo) > 20 and cislo not in numDict:
-        lt = str(cislo/10).split(".",2)
+    elif (num) > 20 and num not in numDict:
+        lt = str(num/10).split(".",2)
         desitky = int(lt[0]) * 10
         jednotky = lt[1]
         return numDict[desitky] + " " + numDict[int(jednotky)]
     else:
-        return numDict[int(cislo)]
+        return numDict[int(num)]
     
 if __name__ == "__main__":
     cislo = userInputLimit()
