@@ -17,7 +17,13 @@ def je_prvocislo(cislo):
     36 * 1
     Jak vidite v druhe polovine se dvojice opakuji, tzn. v tomto pripade staci overit delitelnost pouze do 6 (vcetne)
     """
-    return False
+    num = int(cislo)
+    if num > 1 and num % num == 0 and num / 1 == num:
+        #TODO
+            
+        return True
+    else:
+        return False
 
 def vrat_prvocisla(maximum):
     """
@@ -26,6 +32,7 @@ def vrat_prvocisla(maximum):
     return [2,3,5]
 
 if __name__ == "__main__":
-    cislo = input("Zadej maximum: ")
-    prvocisla = vrat_prvocisla(cislo)
-    print(prvocisla)
+    print (je_prvocislo(100))
+    #cislo = input("Zadej maximum: ")
+    #prvocisla = vrat_prvocisla(cislo)
+    #print(prvocisla)
