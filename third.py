@@ -28,7 +28,7 @@ def vrat_prvocisla(maximum):
             results.append(item)                #pokud je fce je_prvocislo(cislo) = True, zapise do listu results 
     return results                              #fce vrat_prvocisla(maximum) vraci list results
 
-if __name__ == "__main__":
+if __name__ == "__main__":                      #testovaci kpd
     cislo = je_prvocislo(100)
     print (cislo)
     cislo = input("Zadej maximum: ")
