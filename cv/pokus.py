@@ -1,7 +1,4 @@
-#funkce, ktera vypise do konole Hello world
-import array
-
-
+#funkce, ktera vypise do konzole Hello world
 def hello_world():          
     print("Hello world")
 
