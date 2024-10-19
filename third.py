@@ -1,38 +1,36 @@
 def je_prvocislo(cislo):
     """
-    Funkce overi, zda zadane cislo je nebo neni prvocislo a vrati True nebo False
-
-    Prvocislo je takove cislo vetsi nez 1, ktere neni delitelne zadnym jinym cislem jenom 1 a samo sebou.
-
-    Napoveda jak otestova prvocislo:
-    Cislo 36 vznikne nasobenim:
-    1 * 36
-    2 * 18
-    3 * 12
-    4 * 9
-    6 * 6
-    9 * 4
-    12 * 3
-    18 * 2
-    36 * 1
-    Jak vidite v druhe polovine se dvojice opakuji, tzn. v tomto pripade staci overit delitelnost pouze do 6 (vcetne)
+    Funkce overi zda je cislo prvocislo.
     """
-    num = int(cislo)
-    if num > 1 and num % num == 0 and num / 1 == num:
-        #TODO
-            
-        return True
-    else:
-        return False
+    num = int(cislo)                            #prevod z any type na int type pro logicke operace
+    if num <= 1:
+        return None
+    else:                                       #overeni pokud je cislo delitelne pouze cislem 1 a samym sebou
+        overeni = None
+        for i in range(2, num):                 #pro kazde i (cislo) v rozmezi 2 a num
+            if (num % i) == 0:                      #pokud num % i == 0 | pokud num / i vyslo bez zbytku
+                overeni = True                  # overeni = true, cislo je delitelne vicekrat nez pouze cislem 1 a samym sebou
+                break
+        if overeni == True:                     #pokud je overeni = true,
+            return False                            #a) fce je_prvocislo vraci False protoze dane cislo je prvocislo.
+        else:
+            return True                             #b) fce je_prvocislo vraci True protoze dane cislo je prvocislo.
 
 def vrat_prvocisla(maximum):
     """
     Funkce spocita vsechna prvocisla v rozsahu 1 az maximum a vrati je jako seznam.
     """
-    return [2,3,5]
+    results = []
+    cisla = list(range(1, int(maximum) + 1))    # vytvoreni listu "cisla" od (1;maximum>
+
+    for item in cisla:                          #for overi pro kazde cislo v listu, zda je prvocislo
+        if je_prvocislo(item) == True:          #                                   pomoci fce je_prvocislo(cislo),
+            results.append(item)                #pokud je fce je_prvocislo(cislo) = True, zapise do listu results 
+    return results                              #fce vrat_prvocisla(maximum) vraci list results
 
 if __name__ == "__main__":
-    print (je_prvocislo(100))
-    #cislo = input("Zadej maximum: ")
-    #prvocisla = vrat_prvocisla(cislo)
-    #print(prvocisla)
+    cislo = je_prvocislo(100)
+    print (cislo)
+    cislo = input("Zadej maximum: ")
+    prvocisla = vrat_prvocisla(cislo)
+    print(prvocisla)
