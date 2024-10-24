@@ -1,5 +1,5 @@
-from cviceni4_jaccard import jaccardova_vzdalenost_mnozin
-from cviceni4_levenstein import levensteinova_vzdalenost
+from cv4_levenstein import jaccardova_vzdalenost_mnozin
+from cv4_jaccard import levensteinova_vzdalenost
 
 
 def deduplikace_dotazu2(dotazy):
