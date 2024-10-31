@@ -23,7 +23,6 @@ def write_data(soubor, data):
             file.write(line)
 
 
-
 if __name__ == "__main__":
     try:
         file = sys.argv[1]
