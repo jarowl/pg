@@ -2,9 +2,11 @@ import sys
 import csv
 
 def nacti_csv(soubor):
-    data = []
     # nacist data ze souboru
-    return data
+    with open(soubor, "r") as file:
+        reader = csv.reader(soubor)
+        for radek in reader:
+            return radek
 
 
 def spoj_data(data1, data2):
@@ -43,5 +45,7 @@ if __name__ == "__main__":
     soubor2 = sys.argv[2]
     csv_data1 = nacti_csv(soubor1)
     csv_data2 = nacti_csv(soubor2)
+    print(csv_data1)
+    print(csv_data2)
     vysledna_data = spoj_data(csv_data1, csv_data2)
     zapis_csv("vysledny_excel.csv", vysledna_data)
