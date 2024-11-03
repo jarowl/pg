@@ -78,6 +78,6 @@ if __name__ == '__main__':
         file_name = sys.argv[1]
         print_file_type(file_name)
     except IndexError:
-        print("Nebyly zadány soubory.")
+        print("Nebyly zadany soubory.")
     except FileNotFoundError:
         print("Zadany soubor neexistuje.")
