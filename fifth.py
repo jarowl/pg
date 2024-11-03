@@ -41,7 +41,7 @@ def is_gif(file_name):
     header = read_header(file_name, 3)
 
     # vyhodnoť zda je soubor gif
-    if header == 'GIF':
+    if header == b'GIF':
         return True
     return False
 
@@ -77,5 +77,7 @@ if __name__ == '__main__':
     try:
         file_name = sys.argv[1]
         print_file_type(file_name)
-    except:
-        pass
+    except IndexError:
+        print("Nebyly zadány soubory.")
+    except FileNotFoundError:
+        print("Zadany soubor neexistuje.")
