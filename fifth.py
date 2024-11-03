@@ -13,7 +13,10 @@ def read_header(file_name, header_length):
     Tato funkce načte binární soubor z cesty file_name,
     z něj přečte prvních header_length bytů a ty vrátí pomocí return
     """
-    return b'xxx'
+    with open(file_name, "rb") as file:
+        bytes = file.read(header_length)
+
+    return bytes
 
 
 def is_jpeg(file_name):
@@ -23,7 +26,8 @@ def is_jpeg(file_name):
     """
     # načti hlavičku souboru
     header = read_header(file_name, len(jpeg_header))
-
+    if header == jpeg_header:
+        return True
     # vyhodnoť zda je soubor jpeg
 
     return False
@@ -34,7 +38,11 @@ def is_gif(file_name):
     Funkce zkusí přečíst ze souboru hlavičku obrázku jpeg,
     tu srovná s definovanými hlavičkami v proměnných gif_header1 a gif_header2
     """
+    header = read_header(file_name, 3)
+
     # vyhodnoť zda je soubor gif
+    if header == 'GIF':
+        return True
     return False
 
 
@@ -43,7 +51,10 @@ def is_png(file_name):
     Funkce zkusí přečíst ze souboru hlavičku obrázku jpeg,
     tu srovná s definovanou hlavičkou v proměnné png_header
     """
+    header = read_header(file_name, len(png_header))
     # vyhodnoť zda je soubor png
+    if header == png_header:
+        return True
     return False
 
 
