@@ -1,5 +1,6 @@
 import sys
 import requests
+from lxml import html
 
 
 def download_url_and_get_all_hrefs(url):
@@ -11,6 +12,17 @@ def download_url_and_get_all_hrefs(url):
     """
     hrefs = []
 
+    response = requests.get(url)
+    if response.status_code != 200:
+        print('chyba')
+        return []
+    
+    root = html.fromstring(response.content)
+    for h in ("a_href"):
+        elements = root.xpath(f"//{h}")
+        for el in elements:
+            href = el.text_content()
+            hrefs.append(href)
     return hrefs
 
 
