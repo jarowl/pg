@@ -1,6 +1,6 @@
 import sys
 import requests
-from lxml import html
+from bs4 import BeautifulSoup
 
 
 def download_url_and_get_all_hrefs(url):
@@ -10,27 +10,33 @@ def download_url_and_get_all_hrefs(url):
     pokud ano, najdete ve stazenem obsahu stranky response.content vsechny vyskyty
     <a href="url">odkaz</a> a z nich nactete url, ktere vratite jako seznam pomoci return
     """
-    hrefs = []
+    try:
+        hrefs = []
+        response = requests.get(url)
 
-    response = requests.get(url)
-    if response.status_code != 200:
-        print('chyba')
-        return []
+            # Zkontrolujeme, zda je odpověď úspěšná (status code 200)
+        if response.status_code == 200:
+
+            # Vytvoříme objekt BeautifulSoup pro analýzu HTML
+            soup = BeautifulSoup(response.content, 'html.parser')
+
+            # Najdeme všechny <a> tagy s atributem href
+            for link in soup.find_all('a'):
+                hrefs.append(link.get('href'))
+        else:
+            print(f"Chyba při stahování stránky: {response.status_code}")
+
+    except Exception as e:
+        print(f"Došlo k chybě při načítání URL: {e}")
     
-    root = html.fromstring(response.content)
-    for h in ("a_href"):
-        elements = root.xpath(f"//{h}")
-        for el in elements:
-            href = el.text_content()
-            hrefs.append(href)
+    # Vrátíme seznam nalezených odkazů
     return hrefs
-
 
 if __name__ == "__main__":
     try:
         url = sys.argv[1]
-        all_hrefs = download_url_and_get_all_hrefs(url)
-        for href in all_hrefs:
+        hrefs = download_url_and_get_all_hrefs(url)
+        for href in hrefs:
             print(href)
     # osetrete potencialni chyby pomoci vetve except
     except Exception as e:
